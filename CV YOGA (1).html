@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Yoga Dwi Stiawan | TKJ Specialist</title>
+  <link rel="icon" type="image/png" href="https://qu.ax/aEUnW.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="https://qu.ax/aEUnW.png" />
+<link rel="shortcut icon" href="https://qu.ax/aEUnW.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://qu.ax/aEUnW.png" />
+<meta name="apple-mobile-web-app-title" content="CV YOGA" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#4a6bff">
+  <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --secondary: #1c0d6f;
+      --accent: #f72585;
+      --dark: #14213d;
+      --light: #f8f9fa;
+      --gray: #adb5bd;
+      --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      --gradient-accent: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1d1d1d;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* 3D Background Elements */
+    .three-d-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+    }
+    
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.6;
+      filter: blur(30px);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+    
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--primary);
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .shape-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--secondary);
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 3s;
+    }
+    
+    .shape-3 {
+      width: 200px;
+      height: 200px;
+      background: var(--accent);
+      top: 60%;
+      left: 30%;
+      animation-delay: 6s;
+    }
+    
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Header/Hero */
+    .hero {
+      position: relative;
+      height: 400px;
+      background: url('https://files.catbox.moe/freg6n.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      perspective: 1000px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      width: 100%;
+      transform-style: preserve-3d;
+    }
+    
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 1s ease;
+      letter-spacing: 1px;
+      transform: translateZ(50px);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+      transform: translateZ(30px);
+    }
+    
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.8rem;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      background: rgba(255,255,255,0.2);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .scroll-down:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateX(-50%) scale(1.1) translateZ(20px);
+    }
+    
+    /* 3D Card Effect */
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      will-change: transform;
+    }
+    
+    .card-3d:hover {
+      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    /* Main Content */
+    .main-content {
+      position: relative;
+      background: white;
+      border-radius: 20px;
+      margin-top: -50px;
+      padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      z-index: 10;
+      border: 1px solid rgba(255,255,255,0.2);
+      transform-style: preserve-3d;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
+    }
+    
+    /* Profile Section */
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease;
+    }
+    
+    .profile-img-container {
+      position: relative;
+      min-width: 200px;
+      transform-style: preserve-3d;
+    }
+    
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      transform: translateZ(30px);
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05) translateZ(40px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-badge {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: var(--accent);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 8px 20px rgba(247, 37, 133, 0.4);
+      animation: pulse 2s infinite;
+      transform: translateZ(40px);
+    }
+    
+    .profile-info {
+      flex: 1;
+    }
+    
+    .profile-name {
+      font-size: 2.2rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      transform: translateZ(20px);
+    }
+    
+    .profile-title {
+      font-size: 1.2rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: translateZ(15px);
+    }
+    
+    .profile-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      transform-style: preserve-3d;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--dark);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(67, 97, 238, 0.1);
+      transform: translateZ(10px);
+    }
+    
+    .contact-item:hover {
+      background: rgba(67, 97, 238, 0.2);
+      transform: translateY(-3px) translateZ(20px);
+    }
+    
+    .contact-icon {
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    
+    /* Section Styling */
+    .section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      transform: translateZ(20px);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+      transform: translateZ(10px);
+    }
+    
+    /* About Section */
+    .about-text {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--dark);
+      line-height: 1.8;
+      transform: translateZ(10px);
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: white;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .skill-category-title {
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 600;
+      transform: translateZ(20px);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .skill-category-title i {
+      color: var(--primary);
+    }
+    
+    .skill-list {
+      list-style: none;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .skill-item {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      transform: translateZ(15px);
+    }
+    
+    .skill-name {
+      flex: 1;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .skill-bar {
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+      width: 100%;
+      transform: translateZ(10px);
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 5px;
+      transition: width 1.5s ease;
+      position: relative;
+      overflow: hidden;
+      transform: translateZ(5px);
+    }
+    
+    .skill-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, 
+                  rgba(255,255,255,0) 0%, 
+                  rgba(255,255,255,0.3) 50%, 
+                  rgba(255,255,255,0) 100%);
+      animation: shine 2s infinite;
+    }
+    
+    /* 3D Line Effect for Skills */
+    .skill-3d-line {
+      position: absolute;
+      background: var(--primary);
+      transform-style: preserve-3d;
+      transform-origin: center;
+      box-shadow: 0 0 10px rgba(67, 97, 238, 0.5);
+    }
+    
+    .skill-3d-line.horizontal {
+      height: 2px;
+      width: 100%;
+      transform: rotateX(90deg) translateZ(1px);
+    }
+    
+    .skill-3d-line.vertical {
+      width: 2px;
+      height: 100%;
+      transform: rotateY(90deg) translateZ(1px);
+    }
+    
+    .skill-3d-line.depth {
+      height: 2px;
+      width: 100%;
+      transform: rotateX(0) translateZ(-1px);
+    }
+    
+    /* Experience & Education */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+      transform-style: preserve-3d;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: var(--gradient);
+      transform: translateZ(10px);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+      transform: translateZ(20px);
+    }
+    
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -40px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+      transition: all 0.3s ease;
+      transform: translateZ(30px);
+    }
+    
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.2) translateZ(40px);
+      background: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.4);
+    }
+    
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .timeline-title {
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .timeline-subtitle {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+    
+    .timeline-description {
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    
+    /* Certifications Section */
+    .certifications {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    /* Certifications Grid */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.certification-simple {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.certification-simple:hover {
+  transform: translateY(-5px);
+}
+
+.certification-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.certification-i {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.certification-info {
+  padding: 1.5rem;
+}
+
+.certification-name {
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.certification-org {
+  color: var(--secondary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.certification-date {
+  color: var(--gray);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.certification-date i {
+  color: var(--primary);
+}
+    
+    .certification-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+      transform-style: preserve-3d;
+    }
+    
+    .certification-item:hover {
+      transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .certification-image-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+    
+    .certification-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+      transform: translateZ(20px);
+    }
+    
+    .certification-item:hover .certification-image {
+      transform: scale(1.05) translateZ(30px);
+    }
+    
+    .certification-title-overlay {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+      color: white;
+      transform: translateZ(30px);
+    }
+    
+    .certification-title {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .certification-issuer {
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .certification-details {
+      padding: 2rem;
+      transform-style: preserve-3d;
+    }
+    
+    .certification-date, .certification-id {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transform: translateZ(15px);
+    }
+    
+    .certification-date i, .certification-id i {
+      color: var(--primary);
+    }
+    
+    .certification-description {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      font-size: 1rem;
+      line-height: 1.7;
+      transform: translateZ(10px);
+    }
+    
+    /* Portfolio Section */
+    .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  aspect-ratio: 1/1;
+  transform-style: preserve-3d;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+  transform: translateZ(20px);
+}
+    
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding: 2rem;
+      text-align: center;
+      transform: translateZ(30px);
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    
+    .portfolio-item:hover .portfolio-img {
+      transform: scale(1.1) translateZ(30px);
+    }
+    
+    .portfolio-title {
+      color: white;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .portfolio-category {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      background: rgba(255,255,255,0.2);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+    }
+    
+    /* 3D Floating Elements */
+    .floating-element {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.2);
+      z-index: -1;
+      animation: float 8s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+    
+    .floating-element-1 {
+      top: 20%;
+      left: 5%;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(45deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+      animation-delay: 0s;
+    }
+    
+    .floating-element-2 {
+      top: 60%;
+      right: 8%;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, rgba(247, 37, 133, 0.1), rgba(181, 23, 158, 0.1));
+      animation-delay: 2s;
+    }
+    
+    .floating-element-3 {
+      bottom: 10%;
+      left: 15%;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, rgba(20, 33, 61, 0.1), rgba(67, 97, 238, 0.1));
+      animation-delay: 4s;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.05) 100%);
+      border-radius: 15px;
+      margin: 2rem 0;
+    }
+    
+    .contact-text {
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0 auto;
+      gap: 1rem;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .whatsapp-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+                  rgba(255,255,255,0) 0%, 
+                  rgba(255,255,255,0.3) 50%, 
+                  rgba(255,255,255,0) 100%);
+      transition: all 0.5s ease;
+    }
+    
+    .whatsapp-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+    }
+    
+    .whatsapp-button:hover::before {
+      left: 100%;
+    }
+    
+    .whatsapp-icon {
+      font-size: 1.5rem;
+    }
+    
+    /* Social Media */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: white;
+      color: var(--primary);
+      font-size: 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .social-link.facebook:hover {
+      background: linear-gradient(135deg, #1877F2 0%, #0A54B3 100%);
+      color: white;
+      transform: translateY(-8px);
+    }
+    
+    .social-link.instagram:hover {
+      background: linear-gradient(135deg, #E1306C 0%, #833AB4 100%);
+      color: white;
+      transform: translateY(-8px);
+    }
+    
+    .social-link.twitter:hover {
+      background: linear-gradient(135deg, #1DA1F2 0%, #0D8ABC 100%);
+      color: white;
+      transform: translateY(-8px);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--gray);
+      font-size: 1rem;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(58, 12, 163, 0.05) 100%);
+      margin-top: 3rem;
+      border-radius: 20px 20px 0 0;
+    }
+    
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50px;
+      padding: 10px 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .music-player:hover {
+      transform: scale(1.05);
+    }
+    
+    .music-control {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .music-info {
+      font-size: 14px;
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: max-width 0.5s ease;
+    }
+    
+    .music-player:hover .music-info {
+      max-width: 200px;
+      margin-right: 10px;
+    }
+    
+    /* 3D Cube Animation */
+    .cube-container {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      width: 100px;
+      height: 100px;
+      perspective: 1000px;
+      z-index: -1;
+    }
+    
+    .cube {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      animation: rotate 15s infinite linear;
+    }
+    
+    .cube-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(67, 97, 238, 0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: white;
+      backdrop-filter: blur(5px);
+    }
+    
+    .cube-face.front {
+      transform: rotateY(0deg) translateZ(50px);
+      background: rgba(67, 97, 238, 0.2);
+    }
+    
+    .cube-face.back {
+      transform: rotateY(180deg) translateZ(50px);
+      background: rgba(247, 37, 133, 0.2);
+    }
+    
+    .cube-face.right {
+      transform: rotateY(90deg) translateZ(50px);
+      background: rgba(76, 201, 240, 0.2);
+    }
+    
+    .cube-face.left {
+      transform: rotateY(-90deg) translateZ(50px);
+      background: rgba(20, 33, 61, 0.2);
+    }
+    
+    .cube-face.top {
+      transform: rotateX(90deg) translateZ(50px);
+      background: rgba(58, 12, 163, 0.2);
+    }
+    
+    .cube-face.bottom {
+      transform: rotateX(-90deg) translateZ(50px);
+      background: rgba(181, 23, 158, 0.2);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(247, 37, 133, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(247, 37, 133, 0);
+      }
+    }
+    
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+      
+      .profile-badge {
+        right: calc(50% - 100px);
+      }
+      
+      .profile-contact {
+        justify-content: center;
+      }
+      
+      .cube-container {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        height: 350px;
+      }
+      
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .main-content {
+        padding: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .profile-img {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .music-player {
+        bottom: 15px;
+        left: 15px;
+      }
+      
+      .floating-element {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        height: 300px;
+        border-radius: 0;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+      
+      .whatsapp-button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+      
+      .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .music-player {
+        bottom: 10px;
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 3D Background Elements -->
+  <div class="three-d-background" id="threeJSBackground"></div>
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  
+  <!-- Floating 3D Elements -->
+  <div class="floating-element floating-element-1"></div>
+  <div class="floating-element floating-element-2"></div>
+  <div class="floating-element floating-element-3"></div>
+  
+  <!-- 3D Cube Animation -->
+  <div class="cube-container">
+    <div class="cube">
+      <div class="cube-face front"><i class="fas fa-code"></i></div>
+      <div class="cube-face back"><i class="fas fa-network-wired"></i></div>
+      <div class="cube-face right"><i class="fas fa-paint-brush"></i></div>
+      <div class="cube-face left"><i class="fas fa-server"></i></div>
+      <div class="cube-face top"><i class="fas fa-laptop-code"></i></div>
+      <div class="cube-face bottom"><i class="fas fa-mobile-alt"></i></div>
+    </div>
+  </div>
+  
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+    
+    <div class="scroll-down" onclick="scrollToContent()">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <div class="container">
+    <main class="main-content">
+      <!-- Profile Section -->
+      <section class="profile">
+        <div class="profile-img-container">
+          <img src="https://files.catbox.moe/3wwagl.jpg" alt="Yoga" class="profile-img">
+          <div class="profile-badge">
+            <i class="fas fa-check"></i>
+          </div>
+        </div>
+        <div class="profile-info">
+          <h2 class="profile-name">Yoga Dwi Stiawan</h2>
+          <h3 class="profile-title">Cyber Security spesialist</h3>
+          <p>Saya seorang siswa SMK jurusan Teknologi Komputer dan Jaringan dengan minat kuat dalam jaringan komputer, pemrograman, dan Cyber Secuirty. Saya senang mempelajari teknologi baru dan selalu mencari tantangan untuk mengembangkan keterampilan saya.</p>
+          <div class="profile-contact">
+            <a href="tel:+6287761725589" class="contact-item">
+              <i class="fas fa-phone contact-icon"></i>
+              <span>0877 6172 5589</span>
+            </a>
+            <a href="mailto:ystiawan048@gmail.com" class="contact-item">
+              <i class="fas fa-envelope contact-icon"></i>
+              <span><span class="cf_emai`2l" data-cfemail="4b38322a2d223a392e252f22320b2c262a222765282426"><span class="__cf_email__" data-cfemail="4d347f7f75797f7d7c0d2a202c2421632e2220">ystiawan048@gmail.com</span></span></span>
+            </a>
+            <a href="#" class="contact-item">
+              <i class="fas fa-map-marker-alt contact-icon"></i>
+              <span>Jakarta, Indonesia</span>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- About Section -->
+      <section class="section" id="about">
+        <h2 class="section-title">Tentang Saya</h2>
+        <p class="about-text">
+          Saya Yoga Dwi Stiawan , siswa kelas 11 SMK jurusan Teknologi Komputer dan Jaringan. 
+          Saya memiliki passion di bidang teknologi informasi khususnya jaringan komputer dan Cyber Security. 
+          Saya menyukai tantangan, mampu bekerja dalam tim, dan senang belajar hal-hal baru di bidang teknologi.
+        </p>
+        <p class="about-text">
+          Selain keahlian teknis di bidang jaringan, saya juga memiliki keterampilan Programming termasuk Cyber Security dan Web Desain. 
+          Saya percaya kombinasi antara keterampilan teknis dan kreativitas sangat penting di era digital saat ini.
+        </p>
+      </section>
+      
+      <!-- Skills Section -->
+      <section class="section" id="skills">
+        <h2 class="section-title">Keahlian</h2>
+        <div class="skills-container">
+          <div class="skill-category card-3d">
+            <!-- 3D Lines for the skills box -->
+            <div class="skill-3d-line horizontal" style="top: 0; left: 0;"></div>
+            <div class="skill-3d-line horizontal" style="bottom: 0; left: 0;"></div>
+            <div class="skill-3d-line vertical" style="top: 0; left: 0;"></div>
+            <div class="skill-3d-line vertical" style="top: 0; right: 0;"></div>
+            <div class="skill-3d-line depth" style="top: 0; left: 0;"></div>
+            
+            <h3 class="skill-category-title">
+              <i class="fas fa-network-wired"></i>
+              Jaringan Komputer
+            </h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">Cisco Packet Tracer</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Konfigurasi LAN</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Troubleshooting Jaringan</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="skill-category card-3d">
+            <!-- 3D Lines for the skills box -->
+            <div class="skill-3d-line horizontal" style="top: 0; left: 0;"></div>
+            <div class="skill-3d-line horizontal" style="bottom: 0; left: 0;"></div>
+            <div class="skill-3d-line vertical" style="top: 0; left: 0;"></div>
+            <div class="skill-3d-line vertical" style="top: 0; right: 0;"></div>
+            <div class="skill-3d-line depth" style="top: 0; left: 0;"></div>
+            
+            <h3 class="skill-category-title">
+              <i class="fas fa-paint-brush"></i>
+              Soft Skills
+            </h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">Web Desain</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Programming</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 60%"></div>
+                </div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Cyber Security</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </li>
+      </section>
+      
+      <!-- Experience Section -->
+      <section class="section" id="experience">
+        <h2 class="section-title">Pengalaman & Proyek</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024 - Sekarang</div>
+            <h3 class="timeline-title">Simulasi Jaringan LAN</h3>
+            <h4 class="timeline-subtitle">Proyek Sekolah</h4>
+            <p class="timeline-description">
+              Membangun simulasi jaringan LAN untuk lingkungan sekolah menggunakan Cisco Packet Tracer, 
+              termasuk konfigurasi router, switch, dan manajemen alamat IP.
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2025</div>
+            <h3 class="timeline-title">Pertemuan Cyber Security Indonesia</h3>
+            <h4 class="timeline-subtitle">Jadi Hacker</h4>
+            <p class="timeline-description">
+              Mengikuti pelatihan intensif cyber security untuk menambah ilmu dan membangu relasi serta lebih akan serangan dunia cyber .
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Education Section -->
+      <section class="section" id="education">
+        <h2 class="section-title">Pendidikan</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023 - Sekarang</div>
+            <h3 class="timeline-title">SMKN 54 Jakarta</h3>
+            <h4 class="timeline-subtitle">Teknologi Komputer dan Jaringan</h4>
+            <p class="timeline-description">
+              Memperoleh pengetahuan dan keterampilan dalam jaringan komputer, sistem operasi, pemrograman dasar, 
+              dan perakitan komputer.
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2020 - 2023</div>
+            <h3 class="timeline-title">SMPN 59 Jakarta</h3>
+            <p class="timeline-description">
+              Masa pendidikan menengah 
+            </p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2014 - 2020</div>
+            <h3 class="timeline-title">SDN Harapan Mulya 01 PG</h3>
+            <p class="timeline-description">
+              Pendidikan dasar 
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Certifications Section -->
+<section class="section" id="certifications">
+  <h2 class="section-title">Sertifikasi</h2>
+  <div class="certifications-grid">
+    <!-- Sertifikat 1 -->
+    <div class="certification-simple">
+      <img src="https://files.catbox.moe/bbok7x.jpg" alt="Sertifikat 1" class="certification-img">
+      <div class="certification-info">
+        <h3 class="certification-name">Mikrotik dan Cisco Routers</h3>
+        <p class="certification-org">badan pelatihan P4 </p>
+        <p class="certification-date"><i class="fas fa-calendar-alt"></i> 06 September 2024</p>
+      </div>
+    </div>
+    
+    <!-- Sertifikat 2 -->
+    <div class="certification-simple">
+      <img src="https://files.catbox.moe/xs1m6f.jpg" alt="Sertifikat 2" class="certification-img">
+      <div class="certification-info">
+        <h3 class="certification-name">Linux Fundamental</h3>
+        <p class="certification-org">Aguna Course</p>
+        <p class="certification-date"><i class="fas fa-calendar-alt"></i> 17 Juli 2024</p>
+      </div>
+    </div>
+    
+    <!-- Sertifikat 3 -->
+    <div class="certification-simple">
+      <img src="https://files.catbox.moe/izjxmp.jpg" alt="Sertifikat 3" class="certification-img">
+      <div class="certification-info">
+        <h3 class="certification-name">Virtual Machine Fundamental</h3>
+        <p class="certification-org">Aguna Course</p>
+        <p class="certification-date"><i class="fas fa-calendar-alt"></i> 17 Juli 2024</p>
+      </div>
+    </div>
+    
+    <!-- Sertifikat 4 -->
+    <div class="certification-simple">
+      <img src="https://files.catbox.moe/8g5icj.jpg" alt="Sertifikat 4" class="certification-img">
+      <div class="certification-info">
+        <h3 class="certification-name">Cyber Security dan Business Strategy</h3>
+        <p class="certification-org">Universitas Nasional</p>
+        <p class="certification-date"><i class="fas fa-calendar-alt"></i> 12 Agustus 2024</p>
+      </div>
+    </div>
+  </div>
+
+   <!-- Sertifikat 5 -->
+   <div class="certification-simple">
+    <img src="https://files.catbox.moe/m5jk13.jpg" alt="Sertifikat 5" class="certification-img">
+    <div class="certification-info">
+      <h3 class="certification-name">Mini Class CEH</h3>
+      <p class="certification-org">Jadi Hacker</p>
+      <p class="certification-date"><i class="fas fa-calendar-alt"></i> 27 September 2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section" id="portfolio">
+    <h2 class="section-title">Portofolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item card-3d">
+        <img src="https://files.catbox.moe/m9awju.jpg" alt="Engineering" class="portfolio-img">
+        <div class="portfolio-overlay">
+          <h3 class="portfolio-title">Engineering</h3>
+          <p class="portfolio-category">Server</p>
+        </div>
+      </div>
+      
+      <div class="portfolio-item card-3d">
+        <img src="https://files.catbox.moe/3bpub4.jpg" alt="Desain Poster" class="portfolio-img">
+        <div class="portfolio-overlay">
+          <h3 class="portfolio-title">Trader</h3>
+          <p class="portfolio-category">Saham</p>
+        </div>
+      </div>
+      
+      <div class="portfolio-item card-3d">
+        <img src="https://files.catbox.moe/k4t2s3.jpg" alt="Desain Poster Event" class="portfolio-img">
+        <div class="portfolio-overlay">
+          <h3 class="portfolio-title">Arsitektur</h3>
+          <p class="portfolio-category">Sketch Up</p>
+        </div>
+      </div>
+      
+      <div class="portfolio-item card-3d">
+        <img src="https://files.catbox.moe/jquit4.jpg" alt="Desain Poster" class="portfolio-img">
+        <div class="portfolio-overlay">
+          <h3 class="portfolio-title">Hobi Suangarrr</h3>
+          <p class="portfolio-category">Mio Khalifa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+      <!-- Contact Section -->
+      <section class="section" id="contact">
+        <div class="contact-section">
+          <h2 class="section-title">Hubungi Saya</h2>
+          <p class="contact-text">
+            Follow akun media sosial saya untuk melihat karya terbaru. Untuk pertanyaan atau kolaborasi, 
+            silakan hubungi saya melalui WhatsApp dengan menekan tombol di bawah ini.
+          </p>
+          
+          <a href="https://wa.me/6287761725589" class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp whatsapp-icon"></i>
+            <span>Contact Person</span>
+          </a>
+          
+          <div class="social-links">
+            <a href="https://www.instagram.com/equalizer87_/profilecard/?igsh=MWZoZ3F6bm43Ynly" class="social-link instagram" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/share/19BjMAgi2B/" class="social-link facebook" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/yoga-dwi-stiawan-62862832a/" class="social-link linkedin" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer class="footer">
+    <p>&copy; 2025 Yoga Dwi Stiawan. All rights reserved.</p>
+  </footer>
+  
+  <!-- Music Player -->
+<div class="music-player">
+  <button class="music-control" id="musicToggle">
+    <i class="fas fa-play" id="musicIcon"></i>
+  </button>
+  <div class="music-info" id="musicTitle">Aku Dah Lupa - Maman Fvndy</div>
+  <audio loop id="bgMusic" src="https://files.catbox.moe/98ifs6.mp3" autoplay></audio>
+</div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    // Initialize 3D effects with vanilla-tilt.js
+    document.addEventListener('DOMContentLoaded', () => {
+      // Apply 3D tilt effect to all cards with class card-3d except contact section
+      const cards = document.querySelectorAll('.card-3d:not(.contact-section)');
+      cards.forEach(card => {
+        VanillaTilt.init(card, {
+          max: 15,
+          speed: 400,
+          glare: true,
+          "max-glare": 0.2,
+          scale: 1.03
+        });
+      });
+      
+      // Initialize Three.js background
+      initThreeJSBackground();
+      
+      // Scroll animations
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Animate skill bars when they come into view
+      const skillBars = document.querySelectorAll('.skill-progress');
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const width = entry.target.style.width;
+            entry.target.style.width = '0';
+            setTimeout(() => {
+              entry.target.style.width = width;
+            }, 100);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+      
+      skillBars.forEach(bar => {
+        skillObserver.observe(bar);
+      });
+    });
+    
+    // Three.js Background Animation
+    function initThreeJSBackground() {
+      const container = document.getElementById('threeJSBackground');
+      if (!container) return;
+      
+      // Set up Three.js scene
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+      
+      // Create floating particles
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particleCount = 500;
+      
+      const posArray = new Float32Array(particleCount * 3);
+      for(let i = 0; i < particleCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 10;
+      }
+      
+      particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.02,
+        color: 0x4361ee,
+        transparent: true,
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
+      });
+      
+      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particlesMesh);
+      
+      // Camera position
+      camera.position.z = 3;
+      
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        particlesMesh.rotation.x += 0.0005;
+        particlesMesh.rotation.y += 0.0005;
+        
+        renderer.render(scene, camera);
+      }
+      
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+      
+      animate();
+    }
+    
+    // Smooth scroll to content
+    function scrollToContent() {
+      document.querySelector('.main-content').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+    
+    // Music player functionality
+    const musicToggle = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicTitle = document.getElementById('musicTitle');
+    
+    let isPlaying = false;
+    
+    // Fungsi toggle musik
+    musicToggle.addEventListener('click', function() {
+      if(isPlaying) {
+        bgMusic.pause();
+        musicIcon.classList.remove('fa-pause');
+        musicIcon.classList.add('fa-play');
+      } else {
+        bgMusic.play();
+        musicIcon.classList.remove('fa-play');
+        musicIcon.classList.add('fa-pause');
+      }
+      isPlaying = !isPlaying;
+    });
+    
+    // Auto play (opsional - bisa dihapus jika tidak ingin auto play)
+    window.addEventListener('click', function() {
+      bgMusic.play();
+      bgMusic.volume = 0.3; // Atur volume (0.1 - 1.0)
+      musicIcon.classList.remove('fa-play');
+      musicIcon.classList.add('fa-pause');
+      isPlaying = true;
+    }, { once: true }); // Hanya sekali saat pertama klik
+  </script>
+</body>
+</html>
